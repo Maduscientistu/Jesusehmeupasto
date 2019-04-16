@@ -20,7 +20,7 @@ def sendcatpics(update, context):
 	fotoCat = requests.get("https://api.thecatapi.com/v1/images/search")
 	if fotoCat.response_code == 200:
 		fotoURL = fotoCat.json()[0]['url']
-		send_photo(chat_id=update.message.chat_id, photo=fotoURL, caption='Gato')
+		context.bot.send_photo(chat_id=update.message.chat_id, photo=fotoURL, caption='Gato')
 	else:
 		traps(update, context)
 
