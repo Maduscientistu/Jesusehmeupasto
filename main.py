@@ -17,6 +17,7 @@ def traps(update, context):
 	context.bot.send_message(chat_id=update.message.chat_id, text="There's no greater ire,\n no greater fire\n than the one burning in my soul. \n Why make it so so vile\n Man of little faith \n Traps are all my style\n My purpose and my fate.")
 
 def sendcatpics(update, context):
+	print("vc ta bein?")
 	fotoCat = requests.get("https://api.thecatapi.com/v1/images/search")
 	if fotoCat.response_code == 200:
 		fotoURL = fotoCat.json()[0]['url']
