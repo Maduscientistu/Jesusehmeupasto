@@ -1,4 +1,5 @@
 from telegram.ext import Updater, CommandHandler
+import requests
 import os
 
 TELEGRAM_KEY = os.environ.get("BOT_KEY")
@@ -10,11 +11,17 @@ def start(update, context):
 
 def traps(update, context):
 	context.bot.send_message(chat_id=update.message.chat_id, text="There's no greater ire,\n no greater fire\n than the one burning in my soul. \n Why make it so so vile\n Man of little faith \n Traps are all my style\n My purpose and my fate.")
-	
+
+def sendcatpics(update, context):
+	fotoCat = requests.get("https://aws.random.cat/meow")
+	if fotoCat.response_code == 200:
+		fileURL = fotoCat.json()["file"]
+		send_photo(chat_id=update.message.chat_id, photo=fileURL, caption='Gato')
+	else:
+		traps(update, context)
+
 dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(CommandHandler('notgay', traps))
-
-
-
+dispatcher.add_handler(CommandHandler('cat', sendcatpics))
 
 updater.start_polling()
