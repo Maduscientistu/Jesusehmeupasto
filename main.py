@@ -18,13 +18,13 @@ def traps(update, context):
 
 def sendcatpics(update, context):
 	print("vc ta bein?")
-	fotoCat = requests.get("https://api.thecatapi.com/v1/images/search")
-	if fotoCat.response_code == 200:
-		fotoURL = fotoCat.json()[0]['url']
-		print(fotoURL)
-		context.bot.send_photo(chat_id=update.message.chat_id, photo=fotoURL)
-	else:
-		traps(update, context)
+#	fotoCat = requests.get("https://api.thecatapi.com/v1/images/search")
+#	if fotoCat.response_code == 200:
+#		fotoURL = fotoCat.json()[0]['url']
+#		print(fotoURL)
+#		context.bot.send_photo(chat_id=update.message.chat_id, photo=fotoURL)
+#	else:
+#		traps(update, context)
 
 dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(CommandHandler('notgay', traps))
