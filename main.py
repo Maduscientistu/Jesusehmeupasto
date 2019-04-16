@@ -18,11 +18,9 @@ def traps(update, context):
 
 def sendcatpics(update, context):
 	fotoCat = requests.get("https://api.thecatapi.com/v1/images/search")
-	context.bot.send_message(chat_id=update.message.chat_id, text="Hello, i don't like your face. Don't talk to me, ugly people don't belong to this world. ;P")
 	print(fotoCat.text)
 	if fotoCat.status_code == 200:
 		fotoURL = fotoCat.json()[0]['url']
-		context.bot.send_message(chat_id=update.message.chat_id, text="Hello, i don't like your face. Don't talk to me, ugly people don't belong to this world. ;P")
 		context.bot.send_photo(chat_id=update.message.chat_id, photo=fotoURL)
 	else:
 		traps(update, context)
