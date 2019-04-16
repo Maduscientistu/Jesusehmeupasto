@@ -3,7 +3,7 @@ import requests
 import os
 
 port = os.environ.get("PORT", 5000)
-os.spawnl(os.P_DETATCH, 'C:/ProgramData/Anaconda3/python -m http.server ' + port)
+os.spawnl(os.P_DETACH, 'python -m http.server ' + port)
 
 
 TELEGRAM_KEY = os.environ.get("BOT_KEY")
