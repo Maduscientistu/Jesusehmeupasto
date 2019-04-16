@@ -17,12 +17,12 @@ def traps(update, context):
 	context.bot.send_message(chat_id=update.message.chat_id, text="There's no greater ire,\n no greater fire\n than the one burning in my soul. \n Why make it so so vile\n Man of little faith \n Traps are all my style\n My purpose and my fate.")
 
 def sendcatpics(update, context):
-#	fotoCat = requests.get("https://cataas.com/c")
-#	if fotoCat.response_code == 200:
-#		print(fotoCat)
-	send_photo(chat_id=update.message.chat_id, photo='https://cataas.com/c', caption='Gato')
-#	else:
-#		traps(update, context)
+	fotoCat = requests.get("https://api.thecatapi.com/v1/images/search")
+	if fotoCat.response_code == 200:
+		fotoURL = fotoCat.json()[0]['url']
+		send_photo(chat_id=update.message.chat_id, photo=fotoURL, caption='Gato')
+	else:
+		traps(update, context)
 
 dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(CommandHandler('notgay', traps))
