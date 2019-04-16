@@ -1,4 +1,4 @@
-import telegram
+from telegram.ext import Updater, CommandHandler
 import os
 
 TELEGRAM_KEY = os.environ.get("BOT_KEY")
